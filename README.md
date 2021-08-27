@@ -18,6 +18,13 @@ The following software is required:
 ├── WebAPI          # A .NET 5 web API that provides the OpenAPI definitions
 ```
 
+## Consuming the HTTP Client with React
+
+- API instances and react-query are setup within [./ReactApp/src/api](./ReactApp/src/api)
+- API and react-query context providers are added in [./ReactApp/src/index.tsx](./ReactApp/src/index.tsx)
+- Query hooks call API endpoints, for example [./ReactApp/src/api/hooks/useGetWeatherForecast.ts](./ReactApp/src/api/hooks/useGetWeatherForecast.ts)
+- Query hooks are called within React components, for example [./ReactApp/src/App/App.tsx](./ReactApp/src/App/App.tsx)
+
 ## Client Generation
 
 Generate the client with:
