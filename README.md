@@ -1,14 +1,9 @@
 # openapi-typescript-fetch-example
 
-An example project that demonstrates:
+An example project that demonstrates how to:
 
-- How to generate a typed HTTP client package from an OpenAPI definition using the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) [`typescript-fetch`](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/typescript-fetch.md) template
-- How to consume the HTTP client in a React application using [react-query](https://github.com/tannerlinsley/react-query)
-
-The following software is required:
-
-- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
-- [Node.js 16](https://nodejs.org/)
+- Generate a typed HTTP client package from an OpenAPI definition using the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) [`typescript-fetch`](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/typescript-fetch.md) template
+- Consume the HTTP client in a React application using [react-query](https://github.com/tannerlinsley/react-query)
 
 ## Project Overview
 
@@ -25,7 +20,28 @@ The following software is required:
 - Query hooks call the generated HTTP client methods, and support request cancellation, for example [./ReactApp/src/api/hooks/useGetWeatherForecast.ts](./ReactApp/src/api/hooks/useGetWeatherForecast.ts) 
 - Query hooks are called within React components, for example [./ReactApp/src/App/App.tsx](./ReactApp/src/App/App.tsx)
 
-## Client Generation
+## Running the Project
+
+The following software is required:
+
+- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [Node.js 16](https://nodejs.org/)
+
+### Running the WebAPI
+
+```console
+dotnet run --project WebAPI
+```
+
+Swagger is then available at: <https://localhost:5001/swagger/index.html>
+
+### Running the React App
+
+```console
+npm start --prefix ReactApp
+```
+
+### Client Generation
 
 Generate the client with:
 
@@ -34,20 +50,6 @@ dotnet msbuild -target:GenerateHTTPClient WebAPI -property:Configuration=Release
 ```
 
 This build script essentially runs some `npm scripts` within `./HTTPClient`, so refer to the scripts in [`./HTTPClient/package.json`](./HTTPClient/package.json).
-
-## Running the WebAPI
-
-```console
-dotnet run --project WebAPI
-```
-
-Swagger is then available at: <https://localhost:5001/swagger/index.html>
-
-## Running the React App
-
-```console
-npm start --prefix ReactApp
-```
 
 ## How this project was bootstrapped
 
