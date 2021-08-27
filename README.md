@@ -1,4 +1,4 @@
-# openapi-typescript-fetch-example
+# openapi-dotnet-react-typescript-fetch-example
 
 An example project that demonstrates how to:
 
