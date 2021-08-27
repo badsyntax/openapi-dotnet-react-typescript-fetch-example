@@ -6,6 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.1.5" />
   </ItemGroup>
+
+  <Target Name="GenerateHTTPClient" DependsOnTargets="build">
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet swagger tofile --output ../HTTPClient/api-spec.json ./bin/Release/net5.0/WebAPI.dll v1" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="npm install --prefix ../HTTPClient" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="npm run generate --prefix ../HTTPClient" />
+  </Target>
 
 </Project>
