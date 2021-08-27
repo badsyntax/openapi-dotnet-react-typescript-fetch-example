@@ -34,9 +34,9 @@ This build script does the following:
 
 ## Consuming the HTTP Client with React
 
-`typescript-fetch` API instances and react-query are setup within [./ReactApp/src/api](./ReactApp/src/api).
+### API Setup
 
-Here's how the generated API is set up:
+API instances and react-query are setup within [./ReactApp/src/api](./ReactApp/src/api), for example:
 
 ```ts
 import {
@@ -59,6 +59,8 @@ export const apiClient = {
 
 export type ApiClient = typeof apiClient;
 ```
+
+### Query Hooks
 
 [Query hooks](./ReactApp/src/api/hooks/) call the generated HTTP Client methods, and support request cancellation, for example:
 
