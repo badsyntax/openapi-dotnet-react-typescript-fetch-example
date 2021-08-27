@@ -1,0 +1,35 @@
+{
+  "name": "example-service-client",
+  "version": "0.0.0",
+  "description": "An example service client library",
+  "main": "lib/cjs",
+  "typings": "lib",
+  "module": "lib",
+  "sideEffects": false,
+  "keywords": [],
+  "engines": {
+    "node": "^16",
+    "npm": "^7"
+  },
+  "files": [
+    "lib",
+    "!**/*.test.*",
+    "!**/*.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc -p tsconfig.build.cjs.json",
+    "build:esm": "tsc -p tsconfig.build.esm.json",
+    "generate": "openapi-generator-cli generate -i ./api-spec.json -g typescript-fetch -t ./template -o ./src/ --additional-properties=typescriptThreePlus=true --enable-post-process-file",
+    "pregenerate": "rimraf ./src ./lib",
+    "postgenerate": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.3.10",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.2"
+  }
+}
