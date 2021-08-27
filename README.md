@@ -13,11 +13,30 @@ An example project that demonstrates how to:
 ├── WebAPI          # A .NET 5 web API that provides the OpenAPI definitions
 ```
 
+### Generating the HTTP Client
+
+The following software is required:
+
+- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [Node.js 16](https://nodejs.org/)
+
+Run the folllowing to generate the client:
+
+```console
+dotnet msbuild -target:GenerateHTTPClient WebAPI -property:Configuration=Release
+```
+
+This build script does the following:
+
+- Builds the WebAPI .NET application
+- Extracts the OpenAPI spec from the .NET application to location `./HTTPClient/api-spec.json`
+- Runs some `npm scripts` within `./HTTPClient` to generate the client (Refer to the scripts in [`./HTTPClient/package.json`](./HTTPClient/package.json))
+
 ## Consuming the HTTP Client with React
 
-API instances and react-query are setup within [./ReactApp/src/api](./ReactApp/src/api).
+`typescript-fetch` API instances and react-query are setup within [./ReactApp/src/api](./ReactApp/src/api).
 
-Here's how the generated API is setup:
+Here's how the generated API is set up:
 
 ```ts
 import {
@@ -117,14 +136,7 @@ export const App: React.FC = () => {
 
 ```
 
-## Running the Project
-
-The following software is required:
-
-- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
-- [Node.js 16](https://nodejs.org/)
-
-### Running the WebAPI
+## Running the WebAPI
 
 ```console
 dotnet run --project WebAPI
@@ -132,25 +144,11 @@ dotnet run --project WebAPI
 
 Swagger is then available at: <https://localhost:5001/swagger/index.html>
 
-### Running the React App
+## Running the React App
 
 ```console
 npm start --prefix ReactApp
 ```
-
-### Client Generation
-
-Generate the client with:
-
-```console
-dotnet msbuild -target:GenerateHTTPClient WebAPI -property:Configuration=Release
-```
-
-This build script does the following:
-
-- Builds the WebAPI .NET application
-- Generates an OpenAPI spec at location `HTTPClient/api-spec.json`
-- Runs some `npm scripts` within `./HTTPClient` (Refer to the scripts in [`./HTTPClient/package.json`](./HTTPClient/package.json))
 
 ## How this project was bootstrapped
 
