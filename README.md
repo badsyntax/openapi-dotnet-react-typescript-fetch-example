@@ -26,7 +26,7 @@ Run the folllowing to generate the client:
 dotnet msbuild -target:GenerateHTTPClient WebAPI -property:Configuration=Release
 ```
 
-This build script does the following:
+The [build script](https://github.com/badsyntax/openapi-typescript-fetch-example/blob/1bc5fa198157f08ba4fe4cc61b276bc39d135dde/WebAPI/WebAPI.csproj#L12-L16) does the following:
 
 - Builds the WebAPI .NET application
 - Extracts the OpenAPI spec from the .NET application to location `./HTTPClient/api-spec.json`
