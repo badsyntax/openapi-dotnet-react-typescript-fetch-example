@@ -23,6 +23,7 @@ The following software is required:
 Run the folllowing to generate the client:
 
 ```console
+dotnet tool restore
 dotnet msbuild -target:GenerateHTTPClient WebAPI -property:Configuration=Release
 ```
 
