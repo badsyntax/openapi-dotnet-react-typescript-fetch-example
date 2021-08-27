@@ -41,7 +41,7 @@ export const apiClient = {
 export type ApiClient = typeof apiClient;
 ```
 
-[Query hooks](./ReactApp/src/api/hooks/) call the generated HTTP client methods, and support request cancellation, for example:
+[Query hooks](./ReactApp/src/api/hooks/) call the generated HTTP Client methods, and support request cancellation, for example:
 
 ```ts
 import { WeatherForecast } from 'example-service-client';
