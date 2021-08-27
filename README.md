@@ -49,7 +49,11 @@ Generate the client with:
 dotnet msbuild -target:GenerateHTTPClient WebAPI -property:Configuration=Release
 ```
 
-This build script essentially runs some `npm scripts` within `./HTTPClient`, so refer to the scripts in [`./HTTPClient/package.json`](./HTTPClient/package.json).
+This build script does the following:
+
+- Builds the WebAPI .NET application
+- Generates an OpenAPI spec at location `HTTPClient/api-spec.json`
+- Runs some `npm scripts` within `./HTTPClient` (Refer to the scripts in [`./HTTPClient/package.json`](./HTTPClient/package.json))
 
 ## How this project was bootstrapped
 
