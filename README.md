@@ -93,7 +93,13 @@ Query hooks are called in [React components](./ReactApp/src/App/App.tsx), for ex
 ```tsx
 export const App: React.FC = () => {
   const queryClient = useQueryClient();
-  const { data, error, isFetching, refetch } = useGetWeatherForecast({
+
+  const {
+    data = [],
+    error,
+    isFetching,
+    refetch,
+  } = useGetWeatherForecast({
     enabled: false,
   });
 
@@ -109,34 +115,28 @@ export const App: React.FC = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <button className="App-link" onClick={getWeatherForecast}>
-          Get Weather Forecast
-        </button>
-        {isFetching && (
-          <p>
-            Loading...(
-            <button className="App-link" onClick={cancelGetWeatherForecast}>
-              Cancel
-            </button>
-            )
+      <button className="App-link" onClick={getWeatherForecast}>
+        Get Weather Forecast
+      </button>
+      {isFetching && (
+        <p>
+          Loading...(
+          <button className="App-link" onClick={cancelGetWeatherForecast}>
+            Cancel
+          </button>)
+        </p>
+      )}
+      {error && <p>Error! {getResponseErrorMessage(error)}</p>}
+      {data.map((forecast, i) => {
+        return (
+          <p key={i}>
+            {forecast.summary} ({forecast.temperatureC}C)
           </p>
-        )}
-        {error && <p>Error! {error}</p>}
-        {!isFetching &&
-          data &&
-          data.map((forecast, i) => {
-            return (
-              <p key={i}>
-                {forecast.summary} ({forecast.temperatureC}C)
-              </p>
-            );
-          })}
-      </header>
+        );
+      })}
     </div>
   );
 };
-
 ```
 
 ## Running the WebAPI
