@@ -127,13 +127,11 @@ export const App: React.FC = () => {
         </p>
       )}
       {error && <p>Error! {getResponseErrorMessage(error)}</p>}
-      {data.map((forecast, i) => {
-        return (
-          <p key={i}>
-            {forecast.summary} ({forecast.temperatureC}C)
-          </p>
-        );
-      })}
+      {data.map((forecast, i) => (
+        <p key={i}>
+          {forecast.summary} ({forecast.temperatureC}C)
+        </p>
+      ))}
     </div>
   );
 };
