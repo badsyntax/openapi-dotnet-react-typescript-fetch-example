@@ -11,7 +11,7 @@
 
   <Target Name="GenerateHTTPClient" DependsOnTargets="build">
     <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet swagger tofile --output ../HTTPClient/api-spec.json ./bin/Release/net5.0/WebAPI.dll v1" />
-    <Exec WorkingDirectory="$(ProjectDir)" Command="npm install --prefix ../HTTPClient" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="npm install --prefix ../HTTPClient ../HTTPClient" /> <!-- double path required for windows -->
     <Exec WorkingDirectory="$(ProjectDir)" Command="npm run generate --prefix ../HTTPClient" />
   </Target>
 
