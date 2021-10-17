@@ -17,9 +17,7 @@ export const App: React.FC = () => {
     error,
     isFetching,
     refetch,
-  } = useGetWeatherForecast({
-    enabled: false,
-  });
+  } = useGetWeatherForecast();
 
   const getWeatherForecast = () => {
     if (!isFetching) {
